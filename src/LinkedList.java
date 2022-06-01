@@ -1,4 +1,4 @@
-
+import javax.swing.*;
 
 public class LinkedList {
     Node root;
@@ -12,6 +12,7 @@ public class LinkedList {
         linkedList.insertAt(0,50);
         linkedList.remove(1500);
         System.out.println(linkedList);
+        System.out.println(linkedList.get(25));
     }
 
     @Override
@@ -79,5 +80,14 @@ public class LinkedList {
             }
             node = node.getNext();
         }
+    }
+    public int get(int index){
+        int val = -1;
+        Node node = root;
+        if (index>getSize()) return -1;
+        for (int i = 0; i <index;i++){
+            node = node.getNext();
+        }
+        return node.getData();
     }
 }
