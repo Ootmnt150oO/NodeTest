@@ -1,15 +1,16 @@
-import javax.swing.*;
 
 public class LinkedList {
     Node root;
-    public LinkedList(int data){
+
+    public LinkedList(int data) {
         root = new Node(data);
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         LinkedList linkedList = new LinkedList(1500);
         linkedList.addLast(100);
         linkedList.addLast(30);
-        linkedList.insertAt(0,50);
+        linkedList.insertAt(0, 50);
         linkedList.remove(1500);
         System.out.println(linkedList);
         System.out.println(linkedList.get(25));
@@ -19,45 +20,48 @@ public class LinkedList {
     public String toString() {
         StringBuilder str = new StringBuilder("root -> ");
         Node now = root;
-        while (now != null){
-           str.append(now.getData()).append(" -> ");
-           now = now.getNext();
+        while (now != null) {
+            str.append(now.getData()).append(" -> ");
+            now = now.getNext();
         }
         return str.append("null").toString();
     }
-    public void addLast(int data){
+
+    public void addLast(int data) {
         Node now = root;
-        while (now.getNext() != null){
+        while (now.getNext() != null) {
             now = now.getNext();
         }
         Node node = new Node(data);
         now.setNext(node);
     }
-    public int getSize(){
+
+    public int getSize() {
         int size = 0;
         Node node = root;
-        while (node!= null){
+        while (node != null) {
             size++;
             node = node.getNext();
         }
         return size;
     }
-    public void insertAt(int index,int data){
+
+    public void insertAt(int index, int data) {
         Node node = root;
-        if (index>getSize()){
+        if (index > getSize()) {
             int count = 1;
-            while (node.getNext()!=null){
+            while (node.getNext() != null) {
                 count++;
-                node  = node.getNext();
+                node = node.getNext();
             }
-            for (int i = count;i < index-1;i++){
+            for (int i = count; i < index - 1; i++) {
                 Node a = new Node(0);
                 node.setNext(a);
                 node = node.getNext();
             }
             Node b = new Node(data);
             node.setNext(b);
-        }else {
+        } else {
             Node a = new Node(data);
             if (index == 0) {
                 a.setNext(node);
@@ -71,9 +75,10 @@ public class LinkedList {
             }
         }
     }
-    public void remove(int data){
+
+    public void remove(int data) {
         Node node = root;
-        while (node.getNext() != null){
+        while (node.getNext() != null) {
             if (node.getNext().getData() == data) {
                 node.setNext(node.getNext().getNext());
                 return;
@@ -81,11 +86,12 @@ public class LinkedList {
             node = node.getNext();
         }
     }
-    public int get(int index){
+
+    public int get(int index) {
         int val = -1;
         Node node = root;
-        if (index>getSize()) return -1;
-        for (int i = 0; i <index;i++){
+        if (index > getSize()) return -1;
+        for (int i = 0; i < index; i++) {
             node = node.getNext();
         }
         return node.getData();
